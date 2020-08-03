@@ -38,9 +38,9 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 
 /** Simple command-line based search demo. */
-public class SearchFiles {
+public class TFIDFSearchFiles {
 
-  private SearchFiles() {}
+  private TFIDFSearchFiles() {}
 
   /** Simple command-line based search demo. */
   public static void main(String[] args) throws Exception {
@@ -90,6 +90,7 @@ public class SearchFiles {
     IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(index)));
     IndexSearcher searcher = new IndexSearcher(reader);
     Analyzer analyzer = new CMPT456Analyzer();
+    CMPT456Similarity similarity = new CMPT456Similarity();
 
     BufferedReader in = null;
     if (queries != null) {
